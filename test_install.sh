@@ -44,16 +44,23 @@ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm composer-setup.php
 
-# Run Composer install and dos2unix on .sh files
-cd jobb-monitor
+# Setup job-monitor files
+cd /nha/jobb-monitor
 composer install
 dos2unix bin/*
 dos2unix scripts/*
-
-# chmod +x .sh files
 chmod +x bin/*
 chmod +x scripts/*
 
+# Setup epj files
+cd /nha/epj
+composer install
+dos2unix *.sh
+dos2unix epj2sip/epj2sip.sh
+dos2unix spj2dpj/spj2dpj.sh
+chmod +x *.sh
+chmod +x epj2sip/epj2sip.sh
+chmod +x spj2dpj/spj2dpj.sh
 
 echo Done
 exit 0
